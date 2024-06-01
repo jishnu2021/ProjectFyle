@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   readMoreButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      window.location.href = "fylehq.com";
+      window.location.href = "https://www.fylehq.com/";
     });
   });
 });
