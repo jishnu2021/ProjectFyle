@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="style1.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="form-wrapper">
+        <div class="form-container">
+            <h2>Talk to us</h2>
+            <form id="ajaxForm" action="https://getform.io/f/pboxjoza" method="POST">
+                <div class="input-group">
+                    <input type="email" name="email" placeholder="Work Email" required />
+                </div>
+                <div class="input-group">
+                    <input type="text" name="first-name" placeholder="First Name" required />
+                    <input type="text" name="last-name" placeholder="Last Name" required />
+                </div>
+                  <label class="checkbox-container">
+                    <input type="checkbox" id="terms" name="terms" required />
+                    <span class="checkmark"></span>
+                    I agree to the following terms and conditions
+                </label>
+                <button type="submit" style="background-color: red; color: white;">Contact us</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        $("#ajaxForm").submit(function(e) {
+            e.preventDefault();
+            var action = $(this).attr("action");
+            $.ajax({
+                type: "POST",
+                url: action,
+                crossDomain: true,
+                data: new FormData(this),
+                dataType: "json",
+                processData: false,
+                contentType: false,
+                headers: {
+                    "Accept": "application/json"
+                }
+            }).done(function() {
+                alert('The form was submitted successfully.');
+            }).fail(function() {
+                alert('An error occurred! Please try again later.');
+            });
+        });
+    </script>
+</body>
+</html>
